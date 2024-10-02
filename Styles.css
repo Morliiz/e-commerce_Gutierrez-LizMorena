@@ -11,6 +11,7 @@ footer {
 .container {
     padding: 40px;
     margin: 30px;
+    display: flex;
     }
 img {
     width: 90%;
@@ -26,4 +27,4 @@ img {
 }
 section{
     margin-top: 20px;
-}
+    }
