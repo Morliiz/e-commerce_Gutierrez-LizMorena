@@ -18,6 +18,7 @@ img {
 }
 .card {
     padding: 20px;
+    display: grid;
 }
 .container{
     padding: 30px;
