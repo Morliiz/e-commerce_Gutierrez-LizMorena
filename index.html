@@ -9,13 +9,20 @@
       <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
-    <header></header>
+    <header>
+      <div class="der">
+        <input />
+        <button id="FilterAuto">Buscar</button>
+        <button id="reset">Borrar</button>
+      </div>
+      <div class="izq">
+        <button onclick="filtrar('Todos')" id="Todos"> Todos </button>
+        <button onclick="filtrar('Usado')" id="Usado"> Usado </button>
+        <button onclick="filtrar('Nuevo')" id="Nuevo"> Nuevo </button>
+      </div>
+    </header>
     <main>
       <h1></h1>
-      <input />
-      <button id="FilterAuto"></button>
-      <button id="reset"></button>
-      <button onclick="filtrar('vintage')"> USADO </button>
       <section class="container"></section>
       <script src="./NAVBAR/navbar.js"></script>
       <script src="./main.js"></script>

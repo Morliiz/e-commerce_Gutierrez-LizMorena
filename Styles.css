@@ -29,3 +29,9 @@ img {
 section{
     margin-top: 20px;
     }
+.der {
+    text-align: right;
+}
+.izq {
+    text-align: left;
+}
