@@ -72,3 +72,67 @@ let data = `
 `;
 
 document.querySelector('main').innerHTML = Contenido;
+
+
+
+
+
+function filtrar(categoria) { 
+  let filterData = data.filter((auto) => auto.categoria.toLowerCase() === categoria.toLowerCase())
+   if(categoria == `Usado`){
+     let Filtrar = filterData.map((auto) =>
+         `<div class="card" style="width: 18rem;">
+             <img src="..." class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h3 class="product-title">${auto.TITULO} </h3>
+                 <p class="product-pricing">${auto.PRECIO} </p> 
+                 <p class= "product-description">${auto.DETALLE}</p>
+                 <p class= "product-nvorus">${auto.categoria}</p>
+                 <div class="produc-button-container"> 
+                 <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Ver mas</a> 
+                 </div>
+             </div>
+             </div>` 
+   );
+   document.querySelector ("header").innerHTML = filterData.join().replaceAll(",", "");
+   }
+ }
+
+
+
+
+ function filtrar(categoria) { 
+  let filterData = data.filter((item) => item.categoria.toLowerCase() === categoria.toLowerCase())
+     let Filtrar = filterData.map((item) =>
+         `<div class="card" style="width: 18rem;">
+             <img src="..." class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h3 class="product-title">${item.TITULO} </h3>
+                 <p class="product-pricing">${item.PRECIO} </p> 
+                 <p class= "product-description">${item.DETALLE}</p>
+                 <p class= "product-nvorus">${item.categoria}</p>
+                 <div class="produc-button-container"> 
+                 <a href="../PRODUCTOR/producto.html?prod=${item.id}" class="product-button">Ver mas</a> 
+                 </div>
+             </div>
+             </div>` 
+   );
+   document.querySelector ("header").innerHTML = Filtrar.join().replaceAll(",", "");
+}
+
+let Filtrar = filterData.map((auto) => {
+  if(auto.categoria === category) {
+    `<div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h3 class="product-title">${auto.TITULO} </h3>
+            <p class="product-pricing">${auto.PRECIO} </p> 
+            <p class= "product-description">${auto.DETALLE}</p>
+            <p class= "product-nvorus">${auto.categoria}</p>
+            <div class="produc-button-container"> 
+            <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Ver mas</a> 
+            </div>
+        </div>
+        </div>` 
+      }
+}  

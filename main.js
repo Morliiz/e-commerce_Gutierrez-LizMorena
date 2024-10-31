@@ -104,55 +104,26 @@ card(data);
 
 //CATEGORIAS
 
-function filtrar(categoria) {
-if (categoria == `Todos`){
-  let  Filtrar = data.map((auto) =>
-    `<div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-            <h3 class="product-title">${auto.TITULO} </h3>
-            <p class="product-pricing">${auto.PRECIO} </p> 
-            <p class= "product-description">${auto.DETALLE}</p>
-            <p class= "product-nvorus">${auto.categoria}</p>
-            <div class="produc-button-container"> 
-            <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Ver mas</a> 
-            </div>
-        </div>
-      </div>` 
-    );
-  document.querySelector ("header").innerHTML = Filtrar.join().replaceAll(",","");
+function filtrar(category) { 
+  if(category == "Todos"){
+    card(data)
+    document.querySelector ("header").innerHTML = Filtrar.join().replaceAll(",", "");
+  } else {
+  let filterData = data.filter((auto) => auto.categoria === category);
+    card(filterData);
+    document.querySelector(".container").innerHTML = Filtrar.join().replaceAll(",", "");
+   }
   }
-}
+  
 
-function filtrar(categoria) { 
- let filterData = data.filter((auto) => auto.categoria.toLowerCase() === categoria.toLowerCase())
-if(categoria == `Usado`){
-  let Filtrar = filterData.map((auto) =>
-      `<div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-              <h3 class="product-title">${auto.TITULO} </h3>
-              <p class="product-pricing">${auto.PRECIO} </p> 
-              <p class= "product-description">${auto.DETALLE}</p>
-              <p class= "product-nvorus">${auto.categoria}</p>
-              <div class="produc-button-container"> 
-              <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Ver mas</a> 
-              </div>
-          </div>
-          </div>` 
-);
-document.querySelector ("header").innerHTML = Filtrar.join().replaceAll(",", "");
-}
-}
-
-//otrs
+//buscador
 
 let btnFilter = document.getElementById("FilterAuto");
 let btnClean = document.getElementById("reset");
 let input = document.querySelector ("input");
 
 const filter = () => {
-let filtered = data.filter((auto) => auto.categoria.toLowerCase() === input.value.toLowerCase())
+let filtered = data.filter((auto) => auto.TITULO.toLowerCase() === input.value.toLowerCase())
 if(filtered.length === 1){
 let Card = filtered.map ((auto) =>
 `<div class="card" style="width: 18rem;">
@@ -168,7 +139,7 @@ let Card = filtered.map ((auto) =>
      </div>
     </div>` 
 );
-  document.querySelector ("header"). innerHTML = Card.join().replaceAll(",", "");
+  document.querySelector(".container"). innerHTML = Card.join().replaceAll(",", "");
 
 }else{
   console.log("producto no encontrado")}
@@ -177,3 +148,5 @@ let Card = filtered.map ((auto) =>
 //BOTON DE BORRAR INPUT
 
 reset.addEventListener ("click", () => input.value = "");
+
+mostrarTodo();
