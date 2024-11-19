@@ -86,9 +86,19 @@ function ca(data) {
         <p class= "product-description">${auto.DETALLE}</p>
         <div class="produc-button-container"> 
          <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Comprar</a> 
-        </div>
-     </div>
-    </div>`    
+        <br/>
+    ${localStorage.getItem ("email")
+      ? `<div class="input-group">
+      <button class="btn btn-danger" type= "button" onclick="increaseItem()"></button>
+      <input type="number" class= "form-control" value="5">
+      <botton class="btn btn-danger" type="button" onclick="decreaseltem")"></button>
+      </div><a class="btn btn-primary col-12" onclick="addItems()">Agregar al carrito</a>`
+      : '<a href="./login.html" class="btn btn-primary col-12">Iniciar sesión para comprar</a>'
+      }
+      
+      </div>
+    </div>
+  </div>`
     main.innerHTML = contenido
 }
 

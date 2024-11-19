@@ -102,6 +102,41 @@ function card(data) {
 }
 card(data);
 
+//buscador
+let Buscadorinput = document.querySelector ("#input");
+
+function buscador(){
+  
+  let filtered = data.filter((auto) => auto.TITULO.toLowerCase() === Buscadorinput.value.toLowerCase())
+
+  let Card = filtered.map ((auto) =>
+  `<div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+          <h3 class="product-title">${auto.TITULO} </h3>
+          <p class="product-pricing">${auto.PRECIO} </p> 
+          <p class= "product-description">${auto.DETALLE}</p>
+          <p class= "product-nvorus">${auto.categoria}</p>
+          <div class="produc-button-container"> 
+          <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Ver mas</a> 
+          </div>
+      </div>
+    </div>` 
+  );
+    document.querySelector("main").innerHTML = Card.join().replaceAll(",", "");
+
+//}else{ console.log("producto no encontrado")}
+}
+
+let btnFilter = document.getElementById("FilterAuto");
+btnFilter.addEventListener("click", buscador);
+
+//BOTON DE BORRAR INPUT
+
+let btnClean = document.getElementById("reset");
+btnClean.addEventListener ("click", () => Buscadorinput.value = "");
+
+
 //CATEGORIAS
 
 function filtrar(category) { 
@@ -113,40 +148,4 @@ function filtrar(category) {
     card(filterData);
     document.querySelector(".container").innerHTML = Filtrar.join().replaceAll(",", "");
    }
-  }
-  
-
-//buscador
-
-let btnFilter = document.getElementById("FilterAuto");
-let btnClean = document.getElementById("reset");
-let input = document.querySelector ("input");
-
-const filter = () => {
-let filtered = data.filter((auto) => auto.TITULO.toLowerCase() === input.value.toLowerCase())
-if(filtered.length === 1){
-let Card = filtered.map ((auto) =>
-`<div class="card" style="width: 18rem;">
-     <img src="..." class="card-img-top" alt="...">
-     <div class="card-body">
-        <h3 class="product-title">${auto.TITULO} </h3>
-        <p class="product-pricing">${auto.PRECIO} </p> 
-        <p class= "product-description">${auto.DETALLE}</p>
-        <p class= "product-nvorus">${auto.categoria}</p>
-        <div class="produc-button-container"> 
-         <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Ver mas</a> 
-        </div>
-     </div>
-    </div>` 
-);
-  document.querySelector(".container"). innerHTML = Card.join().replaceAll(",", "");
-
-}else{
-  console.log("producto no encontrado")}
 }
-
-//BOTON DE BORRAR INPUT
-
-reset.addEventListener ("click", () => input.value = "");
-
-mostrarTodo();
