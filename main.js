@@ -103,7 +103,7 @@ function card(data) {
 card(data);
 
 //buscador
-let Buscadorinput = document.querySelector ("#input");
+let Buscadorinput = document.querySelector ("input");
 
 function buscador(){
   
@@ -131,12 +131,6 @@ function buscador(){
 let btnFilter = document.getElementById("FilterAuto");
 btnFilter.addEventListener("click", buscador);
 
-//BOTON DE BORRAR INPUT
-
-let btnClean = document.getElementById("reset");
-btnClean.addEventListener ("click", () => Buscadorinput.value = "");
-
-
 //CATEGORIAS
 
 function filtrar(category) { 
@@ -149,3 +143,9 @@ function filtrar(category) {
     document.querySelector(".container").innerHTML = Filtrar.join().replaceAll(",", "");
    }
 }
+
+//BOTON DE BORRAR INPUT
+
+let btnClean = document.getElementById("reset");
+btnClean.addEventListener ("click", () => { Buscadorinput.value = ""; card(data)});
+

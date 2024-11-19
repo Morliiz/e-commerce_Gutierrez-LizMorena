@@ -1,6 +1,5 @@
-Login.js
 const cuenta = {
-    email: "milo@gmail.com",
+    email: "milo@guit.com",
     password: "123456"
 }
 
@@ -9,11 +8,10 @@ const hola = (evento) => {
     evento.preventDefault()
         if (cuenta.email === form.elements.email.value && cuenta.password === form.elements.password.value) {
                 localStorage.setItem("email", form.elements.email.value);
-                localStorage.setItem("contrasena", form.elements.password.value);
-                window.location.href = "./index.html";
+                localStorage.setItem("password", form.elements.password.value);
+                window.location.href = "../index.html";
         }else{
             alert("incorrecto");
         }
 }
-console.log(hoo)
-form.addEventListener("submit", hola);
+form.addEventListener("submit", hola);
