@@ -79,20 +79,19 @@ function ca(data) {
 
     let contenido =`
     <div class="card">
-     <img class="product-img" alt = "">
+     <img class="product-img" src="${auto.IMAGEN}" alt="${auto.TITULO}">
      <div class="card-body">
         <h3 class="product-title">${auto.TITULO} </h3>
         <p class="product-pricing">${auto.PRECIO} </p> 
         <p class= "product-description">${auto.DETALLE}</p>
-        <div class="produc-button-container"> 
-         <a href="../PRODUCTOR/producto.html?prod=${auto.id}" class="product-button">Comprar</a> 
-        <br/>
+        <div class="product-button-container"> 
     ${localStorage.getItem ("email")
       ? `<div class="input-group">
-      <button class="btn btn-danger" type= "button" onclick="increaseItem()"></button>
-      <input type="number" class= "form-control" value="5">
-      <botton class="btn btn-danger" type="button" onclick="decreaseltem")"></button>
-      </div><a class="btn btn-primary col-12" onclick="addItems()">Agregar al carrito</a>`
+      <button class="btn btn-danger" id="mas" type="button" onclick="increaseItem()">+</button>
+      <input type="number"  id="number" class= "form-control" value="1">
+      <button class="btn btn-danger" id="menos" type="button" onclick="decreaseltem()">-</button>
+      </div>
+      <a class="btn btn-primary col-12" onclick="addItems()">Agregar al carrito</a>`
       : '<a href="./login.html" class="btn btn-primary col-12">Iniciar sesión para comprar</a>'
       }
       
@@ -102,4 +101,57 @@ function ca(data) {
     main.innerHTML = contenido
 }
 
-ca(data);
+ca(data)
+
+let counter = document.querySelector("#number")
+
+function increaseItem(){
+    const idProduct = Number(window.location.search.split("=")[1])
+    const product = data.find(item => item.id === idProduct)
+
+    if (counter.value < product.STOCK) {
+        counter.value = Number(counter.value) + 1
+    }
+}
+
+
+function decreaseltem(){
+    if (1 < counter.value) {
+        counter.value = Number(counter.value) - 1
+    }
+}
+
+function addItems(){
+    let cart = JSON.parse(localStorage.getItem("cart"))
+    const idProduct = Number(window.location.search.split("=")[1])
+    const product = data.find(item => item.id === idProduct)
+    const existeIdEnCart = cart.some(item => item.product.id === idProduct)
+
+    if (existeIdEnCart) {
+        cart = cart.map(item => {
+            if (item.product.id === idProduct) {
+                return { ... item, quantity : item.quantity + Number(counter.value) }
+            } else{
+                return item;
+            }
+        })
+    } else{
+        cart.push({ product: product, quantity: Number(counter.value) })
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart))
+    document.querySelector("#number").value = 1
+
+    let quantity = cart.reduce((acumulado, actual) => acumulado + actual.quantity, 0)
+
+    localStorage.setItem("quantity", JSON.stringify(quantity))
+
+    Toastify({
+        text:"......",
+        style:{
+            background: "#DB5079"
+        },
+    }
+    ).showToast()
+}
+

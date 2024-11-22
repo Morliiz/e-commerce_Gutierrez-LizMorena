@@ -5,28 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Litio</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    
-      <link rel="stylesheet" href="Styles.css">
+    <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
     <header>
-      <div class="der">
-        <input />
-        <button id="FilterAuto">Buscar</button>
-        <button id="reset">Borrar</button>
-      </div>
-      <div class="izq">
-        <button onclick="filtrar('Todos')" id="Todos"> Todos </button>
-        <button onclick="filtrar('Usado')" id="Usado"> Usado </button>
-        <button onclick="filtrar('Nuevo')" id="Nuevo"> Nuevo </button>
-      </div>
     </header>  
-    <script src="./NAVBAR/navbar.js"></script>
     <main>
       <h1></h1>
-      <section class="container"></section>
-
+      <section class="container">
+        <div class="der">
+          <input />
+          <button id="FilterAuto">Buscar</button>
+          <button id="reset">Borrar</button>
+        </div>
+        <div class="izq">
+          <button onclick="filtrar('Todos')" id="Todos"> Todos </button>
+          <button onclick="filtrar('Usado')" id="Usado"> Usado </button>
+          <button onclick="filtrar('Nuevo')" id="Nuevo"> Nuevo </button>
+        </div>
+      </section>
+      <section class="container" id="product-list"></section>
       <script src="./main.js"></script>
+      <script src="./NAVBAR/navbar.js"></script>
+      <script src="./LOGIN+CAR/cart.js"></script>
     </main>
+
 </body>
 </html>

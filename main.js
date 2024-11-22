@@ -82,7 +82,7 @@
   }]
 
 function card(data) {
-  let main = document.querySelector("main");
+  let productList = document.getElementById("product-list");
 
   let array = data.map(auto => (`
     <div class="card" style="width: 18rem;">
@@ -98,7 +98,7 @@ function card(data) {
      </div>
     </div>`       
   ))
-  main.innerHTML = array
+  productList.innerHTML = array.join('');
 }
 card(data);
 
@@ -123,7 +123,7 @@ function buscador(){
       </div>
     </div>` 
   );
-    document.querySelector("main").innerHTML = Card.join().replaceAll(",", "");
+    document.getElementById("product-list").innerHTML = Card.join().replaceAll(",", "");
 
 //}else{ console.log("producto no encontrado")}
 }
@@ -136,7 +136,7 @@ btnFilter.addEventListener("click", buscador);
 function filtrar(category) { 
   if(category == "Todos"){
     card(data)
-    document.querySelector ("header").innerHTML = Filtrar.join().replaceAll(",", "");
+    document.querySelector ("main").innerHTML = Filtrar.join().replaceAll(",", "");
   } else {
   let filterData = data.filter((auto) => auto.categoria === category);
     card(filterData);
@@ -149,3 +149,10 @@ function filtrar(category) {
 let btnClean = document.getElementById("reset");
 btnClean.addEventListener ("click", () => { Buscadorinput.value = ""; card(data)});
 
+let promesaLoading = new Promise((resolve) => {
+  setTimeout(() => {
+      resolve("ok")
+  }, 1000);
+})
+
+promesaLoading.then(()=> card(data))

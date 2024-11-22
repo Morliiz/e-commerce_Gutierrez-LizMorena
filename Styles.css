@@ -9,10 +9,7 @@ footer {
     margin: 0;
 }
 .container {
-    padding: 40px;
     margin: 30px;
-    display: flex;
-    grid-template-columns: repeat(5fr);
     gap: 10px;
     }
 img {
@@ -20,18 +17,27 @@ img {
 }
 .card {
     padding: 20px;
-    display: grid;
-}
-
-section{
-    margin-top: 20px;
-    padding: 40px;
-    margin: 30px;
-    display: grid;
 }
 .der {
     text-align: right;
+    margin:auto;
 }
 .izq {
     text-align: left;
+    margin:auto;
+}
+header {
+    margin-top: 60px;
+}
+#product-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 16px; 
+}
+#carrito{
+    width: 5%;
+    text-align: end;
+}
+.carro{
+    text-align: end;
 }
